@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusKart | Buy & Sell Within Your Campus</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <!-- Logo -->
+    <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>CampusKart</span>
+    </div>
+
+    <!-- Search -->
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search books, notes, laptops..."
+        >
+
+        <button id="searchBtn">
+
+            <i class="fa-solid fa-search"></i>
+
+        </button>
+
+    </div>
+
+    <!-- Navigation -->
+
+    <ul class="nav-links">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="#categories">Categories</a></li>
+
+        <li><a href="#products">Products</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+    <!-- Login Button -->
+
+    <div id="guestMenu" class="guest-menu">
+
+    <a href="login.html" class="login-btn">
+        Login
+    </a>
+
+    <a href="register.html" class="register-btn">
+        Register
+    </a>
+
+</div> 
+
+    <!-- User Menu -->
+
+    <div
+        class="user-menu"
+        id="userMenu"
+        style="display:none;">
+
+        <button
+            id="userBtn"
+            class="login-btn">
+
+            👤 <span id="userName"></span>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </button>
+
+        <div
+            class="dropdown"
+            id="dropdown">
+
+            <a href="my-listings.html">
+
+                📦 My Listings
+
+            </a>
+
+            <a href="sell.html">
+
+                ➕ Sell Item
+
+            </a>
+
+            <a href="#" id="logoutBtn">
+
+                🚪 Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+
+    <div class="menu-btn">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </div>
+
+</nav>
+
+</header> 
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<h1>
+
+Buy & Sell
+<span>Study Essentials</span>
+
+Within Your Campus
+
+</h1>
+
+<p>
+
+Books, Notes, Calculators, Electronics,
+Cycles and Hostel Essentials.
+
+Connect directly with students.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#products" class="explore-btn">
+    Explore Products
+</a>
+
+<a href="sell.html" class="post-btn">
+    Sell Now
+</a> 
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=900"
+alt="Students">
+
+</div>
+
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories" id="categories">
+
+<h2>Browse Categories</h2>
+
+<div class="category-grid">
+
+<div class="card" data-category="Books">
+    <i class="fa-solid fa-book"></i>
+    <h3>Books</h3>
+</div>
+
+<div class="card" data-category="Notes">
+    <i class="fa-solid fa-file-lines"></i>
+    <h3>Notes</h3>
+</div>
+
+<div class="card" data-category="Electronics">
+    <i class="fa-solid fa-laptop"></i>
+    <h3>Electronics</h3>
+</div>
+
+<div class="card" data-category="Furniture">
+    <i class="fa-solid fa-chair"></i>
+    <h3>Furniture</h3>
+</div>
+
+<div class="card" data-category="Cycles">
+    <i class="fa-solid fa-bicycle"></i>
+    <h3>Cycles</h3>
+</div>
+
+<div class="card" data-category="Calculators">
+    <i class="fa-solid fa-calculator"></i>
+    <h3>Calculators</h3>
+</div>
+
+<div class="card" data-category="Hostel Items">
+    <i class="fa-solid fa-box"></i>
+    <h3>Hostel Items</h3>
+</div>
+
+<div class="card" data-category="Others">
+    <i class="fa-solid fa-layer-group"></i>
+    <h3>Others</h3>
+</div> 
+
+</div>
+
+</section>
+
+<!-- ================= FEATURED PRODUCTS ================= -->
+
+
+
+    
+    <section class="products" id="products"> 
+        <h2>Featured Products</h2> 
+        <!-- Sort Dropdown -->
+    <div class="sort-container">
+
+        <label for="sortProducts"><strong>Sort By:</strong></label>
+
+        <select id="sortProducts">
+
+            <option value="latest">Newest</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="az">A - Z</option>
+
+        </select>
+
+    </div> 
+    
+
+</div> 
+        <div id="loader" class="loader">
+
+    <div class="spinner"></div>
+
+    <p>Loading Products...</p>
+
+</div> 
+    <div class="product-grid" id="product-grid">
+
+    </div>
+
+</section> 
+<div style="text-align:center; margin-bottom:20px;">
+
+    <button id="showAllBtn" class="explore-btn">
+
+        Show All Products
+
+    </button>
+
+</div> 
+
+<!-- ================= WHY US ================= -->
+
+<section class="features">
+
+<h2>Why Choose CampusKart?</h2>
+
+<div class="feature-grid">
+
+<div class="feature">
+
+<i class="fa-solid fa-user-check"></i>
+
+<h3>Verified Students</h3>
+
+<p>
+
+Buy and sell only with verified college students.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>Affordable Prices</h3>
+
+<p>
+
+Get study essentials at student-friendly prices.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-comments"></i>
+
+<h3>Easy Contact</h3>
+
+<p>
+
+Chat directly with sellers.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-earth-asia"></i>
+
+<h3>Eco Friendly</h3>
+
+<p>
+
+Reuse books and reduce waste.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+<div class="footer-container">
+
+<div>
+
+<h3>CampusKart</h3>
+
+<p>
+
+The trusted marketplace for college students.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<ul>
+
+<li>Home</li>
+
+<li>Products</li>
+
+<li>Sell</li>
+
+<li>Contact</li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>Follow Us</h3>
+
+<div class="social-icons">
+
+<i class="fab fa-facebook"></i>
+
+<i class="fab fa-instagram"></i>
+
+<i class="fab fa-linkedin"></i>
+
+<i class="fab fa-github"></i>
+
+</div>
+
+</div>
+
+</div>
+
+<p class="copyright">
+
+© 2026 CampusKart. All Rights Reserved.
+
+</p>
+
+</footer> 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
+<script src="script.js"></script>
+<script src="navbar.js"></script> 
+
+</body>
+</html>
