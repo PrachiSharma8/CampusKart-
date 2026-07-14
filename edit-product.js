@@ -49,7 +49,7 @@ async function loadProduct() {
 
         document.getElementById("preview").src =
             product.image
-            ? `https://campuskart-091f.onrender.com/uploads/${product.image}`
+            ? product.image 
             : "https://picsum.photos/300/200";
 
     }

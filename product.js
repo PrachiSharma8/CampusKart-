@@ -31,7 +31,7 @@ async function loadProduct() {
 
     document.getElementById("productImage").src =
         product.image
-        ? `https://campuskart-091f.onrender.com/uploads/${product.image}`
+        ? product.image 
         : "https://picsum.photos/500";
 
     document.getElementById("sellerName").innerText =
