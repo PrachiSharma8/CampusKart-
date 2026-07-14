@@ -5,7 +5,7 @@ if (!token) {
     window.location.href = "login.html";
 } 
 
-const API = "https://campuskart-091f.onrender.com/api/products";
+const API = "https://campuskart-091f.onrender.com/api/products/add";
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");

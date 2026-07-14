@@ -1,6 +1,6 @@
             
             
-const API = "https://campuskart-091f.onrender.com/api/products";
+const API = "https://campuskart-091f.onrender.com/api/products/add";
 
 const params = new URLSearchParams(window.location.search);
 

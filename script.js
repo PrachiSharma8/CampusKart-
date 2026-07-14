@@ -119,7 +119,7 @@ if (searchInput) {
 // Load Products
 // ==============================
 
-const API_URL = "https://campuskart-091f.onrender.com/api/products";
+const API_URL = "https://campuskart-091f.onrender.com/api/products/add";
 
 let allProducts = [];
 

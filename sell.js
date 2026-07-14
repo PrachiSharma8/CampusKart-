@@ -16,7 +16,7 @@ if (!token || !user) {
     throw new Error("User not logged in");
 
 } 
-const API_URL = "https://campuskart-091f.onrender.com/api/products";
+const API_URL = "https://campuskart-091f.onrender.com/api/products/add"; 
 
 const form = document.getElementById("sellForm"); 
 console.log("FORM =", form);   

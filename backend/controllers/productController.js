@@ -25,15 +25,17 @@ const addProduct = async (req, res) => {
 
     } catch (error) {
 
-        console.log(error);
+    console.error("========== ADD PRODUCT ERROR ==========");
+    console.error(error);
+    console.error(error.message);
+    console.error(error.stack);
 
-        res.status(500).json({
-            success: false,
-            message: error.message,
-            error
-        });
+    res.status(500).json({
+        success: false,
+        message: error.message
+    });
 
-    }
+} 
 };
 
 // ===================== Get All Products =====================
