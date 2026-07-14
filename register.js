@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/auth/register";
+const API = "https://campuskart-091f.onrender.com/api/auth/register";
 
 const form = document.getElementById("registerForm");
 

@@ -119,7 +119,7 @@ if (searchInput) {
 // Load Products
 // ==============================
 
-const API_URL = "http://localhost:5000/api/products";
+const API_URL = "https://campuskart-091f.onrender.com/api/products";
 
 let allProducts = [];
 
@@ -204,7 +204,7 @@ function displayProducts(products){
 
             <img src="${
                 product.image
-                ? `http://localhost:5000/uploads/${product.image}`
+                ? `https://campuskart-091f.onrender.com/uploads/${product.image}`
                 : "https://picsum.photos/300/200"
             }"
 

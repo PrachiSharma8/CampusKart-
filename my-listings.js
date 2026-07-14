@@ -14,7 +14,7 @@ async function loadMyProducts() {
     try {
 
         const res = await fetch(
-            "http://localhost:5000/api/products/my-products",
+            "https://campuskart-091f.onrender.com/api/products/my-products",
             {
                 headers: {
                     Authorization: `Bearer ${authToken}`
@@ -76,7 +76,7 @@ console.log("Token:", authToken);
                     <img
                         src="${
                             product.image
-                                ? `http://localhost:5000/uploads/${product.image}`
+                                ? `https://campuskart-091f.onrender.com/uploads/${product.image}`
                                 : "https://picsum.photos/300/200"
                         }"
                         alt="${product.title}"
@@ -163,7 +163,7 @@ async function deleteProduct(id) {
     try {
 
         const res = await fetch(
-            `http://localhost:5000/api/products/${id}`,
+            `https://campuskart-091f.onrender.com/api/products/${id}`,
             {
                 method: "DELETE",
                 headers: {

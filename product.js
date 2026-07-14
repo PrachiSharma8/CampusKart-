@@ -1,4 +1,6 @@
-const API = "http://localhost:5000/api/products";
+            
+            
+const API = "https://campuskart-091f.onrender.com/api/products";
 
 const params = new URLSearchParams(window.location.search);
 
@@ -29,7 +31,7 @@ async function loadProduct() {
 
     document.getElementById("productImage").src =
         product.image
-        ? `http://localhost:5000/uploads/${product.image}`
+        ? `https://campuskart-091f.onrender.com/uploads/${product.image}`
         : "https://picsum.photos/500";
 
     document.getElementById("sellerName").innerText =

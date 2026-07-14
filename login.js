@@ -1,4 +1,4 @@
-const API="http://localhost:5000/api/auth/login";
+const API="https://campuskart-091f.onrender.com/api/auth/login";
 
 const form=document.getElementById("loginForm");
 
