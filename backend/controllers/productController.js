@@ -12,7 +12,7 @@ const addProduct = async (req, res) => {
 
         // Save uploaded image filename
         if (req.file) {
-            productData.image = req.file.filename;
+            productData.image = req.file.path;
         }
 
         const product = await Product.create(productData);
@@ -155,7 +155,7 @@ console.log("Logged in User =", req.user?.id);
         // Update image only if a new one is uploaded
         if (req.file) {
 
-            updateData.image = req.file.filename;
+            updateData.image = req.file.path; 
 
         }
 
