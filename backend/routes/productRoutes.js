@@ -4,14 +4,14 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const upload = require("../config/multer");
 
-// const {
-//     addProduct,
-//     getProducts,
-//     getSingleProduct,
-//     updateProduct,
-//     deleteProduct, 
-//     getMyProducts 
-// } = require("../controllers/productController");
+const {
+    addProduct,
+    getProducts,
+    getSingleProduct,
+    updateProduct,
+    deleteProduct, 
+    getMyProducts 
+} = require("../controllers/productController");
 
 // console.log("✅ Product routes loaded");
 
@@ -55,13 +55,13 @@ router.get("/", getProducts);
 router.get("/my-products", auth, getMyProducts);
 
 // TEMPORARY TEST
-router.get("/add", (req, res) => {
-    console.log("✅ GET /add route matched");
-    res.json({
-        success: true,
-        message: "GET /add works"
-    });
-});
+// router.get("/add", (req, res) => {
+//     console.log("✅ GET /add route matched");
+//     res.json({
+//         success: true,
+//         message: "GET /add works"
+//     });
+// });
 
 // Get Single Product
 router.get("/:id", getSingleProduct);
@@ -69,3 +69,4 @@ router.get("/:id", getSingleProduct);
 router.put("/:id", auth, upload.single("image"), updateProduct);
 
 router.delete("/:id", auth, deleteProduct); 
+module.exports = router; 
