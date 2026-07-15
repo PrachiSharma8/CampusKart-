@@ -11,9 +11,16 @@ const addProduct = async (req, res) => {
 }; 
 
         // Save uploaded image filename
+        // if (req.file) {
+        //     productData.image = req.file.path;
+        // } 
         if (req.file) {
-            productData.image = req.file.path;
-        } 
+    productData.image = req.file.path;
+}
+
+console.log("Reached addProduct()");
+console.log("req.body =", req.body);
+console.log("req.file =", req.file); 
         console.log("req.body =", req.body);
 console.log("req.file =", req.file);
 console.log("productData =", productData); 
