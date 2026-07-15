@@ -44,10 +44,16 @@ const {
 // module.exports = router; 
 
 // Create Product
-router.post("/add", (req, res, next) => {
-    console.log("✅ POST /add route matched");
-    next();
-}, auth, upload.single("image"), addProduct);
+// router.post("/add", (req, res, next) => {
+//     console.log("✅ POST /add route matched");
+//     next();
+// }, auth, upload.single("image"), addProduct); 
+
+router.post(
+    "/add",
+    auth,
+    addProduct
+); 
 
 // Get All Products
 router.get("/", getProducts);
