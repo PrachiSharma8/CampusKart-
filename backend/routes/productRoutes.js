@@ -1,8 +1,8 @@
-// const express = require("express");
-// const router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-// const auth = require("../middleware/auth");
-// const upload = require("../config/multer");
+const auth = require("../middleware/auth");
+const upload = require("../config/multer");
 
 // const {
 //     addProduct,
