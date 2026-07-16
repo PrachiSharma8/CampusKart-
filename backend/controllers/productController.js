@@ -2,103 +2,38 @@ const Product = require("../models/Product");
 const mongoose = require("mongoose");
 
 // ===================== Add Product =====================
-// const addProduct = async (req, res) => {
-//     try {
-
-//         console.log("===== ADD PRODUCT =====");
-
-//         console.log("User:");
-//         console.log(req.user);
-
-//         console.log("Body:");
-//         console.log(req.body);
-
-//         console.log("File:");
-//         console.log(req.file);
-
-//         const productData = {
-//             ...req.body,
-//             seller: req.user.id
-//         };
-
-//         // Cloudinary automatically gives the image URL
-//         if (req.file) {
-//             productData.image = req.file.path;
-//         }
-
-//         console.log(productData);
-
-//         const product = await Product.create(productData);
-
-//         return res.status(201).json({
-//             success: true,
-//             product
-//         });
-
-//     } catch (error) {
-
-//         console.error("ADD PRODUCT ERROR");
-//         console.error(error);
-
-//         return res.status(500).json({
-//             success: false,
-//             message: error.message
-//         });
-//     }
-// }; 
-
-// const addProduct = async (req, res) => {
-//     try {
-
-//         console.log("BODY =", req.body);
-//         console.log("FILE =", req.file);
-//         console.log("USER =", req.user);
-
-//         const productData = {
-//             title: req.body.title,
-//             description: req.body.description,
-//             price: req.body.price,
-//             category: req.body.category,
-//             condition: req.body.condition,
-//             seller: req.user.id
-//         };
-
-//         // We'll add image back later
-//         // if (req.file) {
-//         //     productData.image = req.file.path;
-//         // }
-
-//         console.log(productData);
-
-//         const product = await Product.create(productData);
-
-//         res.status(201).json({
-//             success: true,
-//             product
-//         });
-
-//     } catch (err) {
-
-//         console.error(err);
-
-//         res.status(500).json({
-//             success: false,
-//             message: err.message
-//         });
-
-//     }
-// };  
 const addProduct = async (req, res) => {
+    try {
+        console.log("===== ADD PRODUCT START =====");
 
-    console.log("############################");
-    console.log("NEW VERSION OF addProduct()");
-    console.log("############################");
+        console.log("req.body =", req.body);
+        console.log("req.file =", req.file);
+        console.log("req.user =", req.user);
 
-    return res.json({
-        success: true,
-        message: "THIS IS THE NEW VERSION"
-    });
+        const productData = {
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            category: req.body.category,
+            condition: req.body.condition,
+            seller: req.user.id
+        };
 
+        console.log("productData =", productData);
+
+        return res.json({
+            success: true,
+            productData
+        });
+
+    } catch (err) {
+        console.error(err);
+
+        return res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
 }; 
 // ===================== Get All Products =====================
 const getProducts = async (req, res) => {
