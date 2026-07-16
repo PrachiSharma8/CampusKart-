@@ -48,18 +48,46 @@ const mongoose = require("mongoose");
 // }; 
 
 const addProduct = async (req, res) => {
-    console.log("========== ADD PRODUCT START ==========");
-    console.log("req.body:", req.body);
-    console.log("req.file:", req.file);
-    console.log("req.user:", req.user);
+    try {
 
-    return res.json({
-        success: true,
-        body: req.body,
-        file: req.file,
-        user: req.user
-    });
-}; 
+        console.log("BODY =", req.body);
+        console.log("FILE =", req.file);
+        console.log("USER =", req.user);
+
+        const productData = {
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            category: req.body.category,
+            condition: req.body.condition,
+            seller: req.user.id
+        };
+
+        // We'll add image back later
+        // if (req.file) {
+        //     productData.image = req.file.path;
+        // }
+
+        console.log(productData);
+
+        const product = await Product.create(productData);
+
+        res.status(201).json({
+            success: true,
+            product
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+
+    }
+};  
 // ===================== Get All Products =====================
 const getProducts = async (req, res) => {
     try {

@@ -36,7 +36,8 @@ imageInput.addEventListener("change", () => {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(form);
+    const formData = new FormData(form); 
+    formData.delete("image"); 
 
     console.log("===== FORM DATA =====");
     for (const pair of formData.entries()) {

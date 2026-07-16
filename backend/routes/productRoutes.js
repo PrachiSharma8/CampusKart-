@@ -9,71 +9,32 @@ const {
     getProducts,
     getSingleProduct,
     updateProduct,
-    deleteProduct, 
-    getMyProducts 
+    deleteProduct,
+    getMyProducts
 } = require("../controllers/productController");
 
-// console.log("✅ Product routes loaded");
+// ===================== ADD PRODUCT =====================
+// TEMPORARY: upload middleware removed for testing
+router.post("/add", auth, addProduct);
 
-// // Create Product
-// router.post(
-//     "/add",
-//     auth,
-//     upload.single("image"),
-//     addProduct
-// );
-
-// // Get All Products
-// router.get("/", getProducts);
-
-// router.get("/my-products", auth, getMyProducts); 
-// // Get Single Product
-// router.get("/:id", getSingleProduct);
-
-// // Update Product
-// router.put(
-//     "/:id",
-//     auth,
-//     upload.single("image"),
-//     updateProduct
-// ); 
-
-// // Delete Product
-// router.delete("/:id", auth, deleteProduct); 
-
-// module.exports = router; 
-
-// Create Product
-// router.post("/add", (req, res, next) => {
-//     console.log("✅ POST /add route matched");
-//     next();
-// }, auth, upload.single("image"), addProduct); 
-
-router.post(
-    "/add",
-    auth, 
-    upload.single("image"), 
-    addProduct
-); 
-
-// Get All Products
+// ===================== GET ALL PRODUCTS =====================
 router.get("/", getProducts);
 
+// ===================== MY PRODUCTS =====================
 router.get("/my-products", auth, getMyProducts);
 
-// TEMPORARY TEST
-// router.get("/add", (req, res) => {
-//     console.log("✅ GET /add route matched");
-//     res.json({
-//         success: true,
-//         message: "GET /add works"
-//     });
-// });
-
-// Get Single Product
+// ===================== SINGLE PRODUCT =====================
 router.get("/:id", getSingleProduct);
 
-router.put("/:id", auth, upload.single("image"), updateProduct);
+// ===================== UPDATE PRODUCT =====================
+router.put(
+    "/:id",
+    auth,
+    upload.single("image"),
+    updateProduct
+);
 
-router.delete("/:id", auth, deleteProduct); 
+// ===================== DELETE PRODUCT =====================
+router.delete("/:id", auth, deleteProduct);
+
 module.exports = router; 
