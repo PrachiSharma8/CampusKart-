@@ -13,3 +13,4 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage });
 
 module.exports = upload; 
+console.log("Uploading image to Cloudinary..."); 

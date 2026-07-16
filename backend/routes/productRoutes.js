@@ -51,7 +51,8 @@ const {
 
 router.post(
     "/add",
-    auth,
+    auth, 
+    upload.single("image"), 
     addProduct
 ); 
 

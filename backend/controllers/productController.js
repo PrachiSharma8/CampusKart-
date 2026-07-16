@@ -2,52 +2,64 @@ const Product = require("../models/Product");
 const mongoose = require("mongoose");
 
 // ===================== Add Product =====================
+// const addProduct = async (req, res) => {
+//     try {
+
+//         console.log("===== ADD PRODUCT =====");
+
+//         console.log("User:");
+//         console.log(req.user);
+
+//         console.log("Body:");
+//         console.log(req.body);
+
+//         console.log("File:");
+//         console.log(req.file);
+
+//         const productData = {
+//             ...req.body,
+//             seller: req.user.id
+//         };
+
+//         // Cloudinary automatically gives the image URL
+//         if (req.file) {
+//             productData.image = req.file.path;
+//         }
+
+//         console.log(productData);
+
+//         const product = await Product.create(productData);
+
+//         return res.status(201).json({
+//             success: true,
+//             product
+//         });
+
+//     } catch (error) {
+
+//         console.error("ADD PRODUCT ERROR");
+//         console.error(error);
+
+//         return res.status(500).json({
+//             success: false,
+//             message: error.message
+//         });
+//     }
+// }; 
+
 const addProduct = async (req, res) => {
-    try {
+    console.log("========== ADD PRODUCT START ==========");
+    console.log("req.body:", req.body);
+    console.log("req.file:", req.file);
+    console.log("req.user:", req.user);
 
-        const productData = {
-    ...req.body, 
-    seller: req.user.id 
-}; 
-
-        // Save uploaded image filename
-        // if (req.file) {
-        //     productData.image = req.file.path;
-        // } 
-        if (req.file) {
-    productData.image = req.file.path;
-}
-
-console.log("Reached addProduct()");
-console.log("req.body =", req.body);
-console.log("req.file =", req.file); 
-        console.log("req.body =", req.body);
-console.log("req.file =", req.file);
-console.log("productData =", productData); 
-
-        const product = await Product.create(productData);
-
-        res.status(201).json({
-            success: true,
-            message: "Product Added Successfully",
-            product
-        });
-
-    } catch (error) {
-
-    console.error("========== ADD PRODUCT ERROR ==========");
-    console.error(error);
-    console.error(error.message);
-    console.error(error.stack);
-
-    res.status(500).json({
-        success: false,
-        message: error.message
+    return res.json({
+        success: true,
+        body: req.body,
+        file: req.file,
+        user: req.user
     });
-
-} 
-};
-
+}; 
 // ===================== Get All Products =====================
 const getProducts = async (req, res) => {
     try {
