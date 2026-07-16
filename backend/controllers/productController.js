@@ -47,47 +47,59 @@ const mongoose = require("mongoose");
 //     }
 // }; 
 
+// const addProduct = async (req, res) => {
+//     try {
+
+//         console.log("BODY =", req.body);
+//         console.log("FILE =", req.file);
+//         console.log("USER =", req.user);
+
+//         const productData = {
+//             title: req.body.title,
+//             description: req.body.description,
+//             price: req.body.price,
+//             category: req.body.category,
+//             condition: req.body.condition,
+//             seller: req.user.id
+//         };
+
+//         // We'll add image back later
+//         // if (req.file) {
+//         //     productData.image = req.file.path;
+//         // }
+
+//         console.log(productData);
+
+//         const product = await Product.create(productData);
+
+//         res.status(201).json({
+//             success: true,
+//             product
+//         });
+
+//     } catch (err) {
+
+//         console.error(err);
+
+//         res.status(500).json({
+//             success: false,
+//             message: err.message
+//         });
+
+//     }
+// };  
 const addProduct = async (req, res) => {
-    try {
 
-        console.log("BODY =", req.body);
-        console.log("FILE =", req.file);
-        console.log("USER =", req.user);
+    console.log("############################");
+    console.log("NEW VERSION OF addProduct()");
+    console.log("############################");
 
-        const productData = {
-            title: req.body.title,
-            description: req.body.description,
-            price: req.body.price,
-            category: req.body.category,
-            condition: req.body.condition,
-            seller: req.user.id
-        };
+    return res.json({
+        success: true,
+        message: "THIS IS THE NEW VERSION"
+    });
 
-        // We'll add image back later
-        // if (req.file) {
-        //     productData.image = req.file.path;
-        // }
-
-        console.log(productData);
-
-        const product = await Product.create(productData);
-
-        res.status(201).json({
-            success: true,
-            product
-        });
-
-    } catch (err) {
-
-        console.error(err);
-
-        res.status(500).json({
-            success: false,
-            message: err.message
-        });
-
-    }
-};  
+}; 
 // ===================== Get All Products =====================
 const getProducts = async (req, res) => {
     try {
