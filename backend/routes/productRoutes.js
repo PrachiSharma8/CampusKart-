@@ -14,22 +14,18 @@ const {
 } = require("../controllers/productController");
 
 // ===================== ADD PRODUCT =====================
-// TEMPORARY: upload middleware removed for testing
 router.post(
     "/add",
     auth,
     upload.single("image"),
     (req, res, next) => {
-
-        console.log("====== AFTER MULTER ======");
-        console.log("BODY =", req.body);
-        console.log("FILE =", req.file);
-
+        console.log("========== AFTER MULTER ==========");
+        console.log("req.body =", req.body);
+        console.log("req.file =", req.file);
         next();
-
     },
     addProduct
-); 
+);
 
 // ===================== GET ALL PRODUCTS =====================
 router.get("/", getProducts);

@@ -21,50 +21,69 @@ const preview = document.getElementById("preview");
 
 // Image Preview
 imageInput.addEventListener("change", () => {
+
     const file = imageInput.files[0];
 
     if (file) {
         preview.src = URL.createObjectURL(file);
         preview.style.display = "block";
     } else {
-        preview.src = "";
         preview.style.display = "none";
     }
+
 });
 
 // Submit Form
 form.addEventListener("submit", async (e) => {
+
     e.preventDefault();
 
-    const formData = new FormData(form); 
-    formData.delete("image"); 
+    const formData = new FormData();
 
-    console.log("===== FORM DATA =====");
-    for (const pair of formData.entries()) {
+    formData.append("title", form.title.value);
+    formData.append("description", form.description.value);
+    formData.append("price", form.price.value);
+    formData.append("category", form.category.value);
+    formData.append("condition", form.condition.value);
+
+    if (imageInput.files.length > 0) {
+        formData.append("image", imageInput.files[0]);
+    }
+
+    console.log("========= FORM DATA =========");
+
+    for (let pair of formData.entries()) {
         console.log(pair[0], pair[1]);
     }
 
     try {
+
         const response = await fetch(API_URL, {
+
             method: "POST",
+
             headers: {
                 Authorization: `Bearer ${token}`
             },
+
             body: formData
+
         });
 
         const data = await response.json();
 
-        console.log("Server Response:", data);
+        console.log(data);
 
-        if (response.ok && data.success) {
+        if (data.success) {
 
             Swal.fire({
                 icon: "success",
-                title: "Success!",
+                title: "Success",
                 text: "Product Added Successfully"
             }).then(() => {
+
                 window.location.href = "my-listings.html";
+
             });
 
         } else {
@@ -72,14 +91,14 @@ form.addEventListener("submit", async (e) => {
             Swal.fire({
                 icon: "error",
                 title: "Error",
-                text: data.message || "Something went wrong."
+                text: data.message
             });
 
         }
 
-    } catch (error) {
+    } catch (err) {
 
-        console.error(error);
+        console.error(err);
 
         Swal.fire({
             icon: "error",
@@ -88,4 +107,5 @@ form.addEventListener("submit", async (e) => {
         });
 
     }
+
 }); 
