@@ -4,11 +4,10 @@ const mongoose = require("mongoose");
 // ===================== Add Product =====================
 const addProduct = async (req, res) => {
     try {
-        console.log("===== ADD PRODUCT START =====");
 
+        console.log("===== ADD PRODUCT =====");
         console.log("req.body =", req.body);
         console.log("req.file =", req.file);
-        console.log("req.user =", req.user);
 
         const productData = {
             title: req.body.title,
@@ -19,20 +18,28 @@ const addProduct = async (req, res) => {
             seller: req.user.id
         };
 
-        console.log("productData =", productData);
+        // Save Cloudinary URL
+        if (req.file) {
+            productData.image = req.file.path;
+        }
 
-        return res.json({
+        const product = await Product.create(productData);
+
+        res.status(201).json({
             success: true,
-            productData
+            message: "Product Added Successfully",
+            product
         });
 
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
 
-        return res.status(500).json({
+        console.error(error);
+
+        res.status(500).json({
             success: false,
-            message: err.message
+            message: error.message
         });
+
     }
 }; 
 // ===================== Get All Products =====================
