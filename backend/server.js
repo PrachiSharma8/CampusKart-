@@ -38,8 +38,18 @@ app.get("/", (req, res) => {
     res.send("🚀 Welcome to CampusKart Backend!");
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; 
 
+app.use((err, req, res, next) => {
+    console.error("========= GLOBAL ERROR =========");
+    console.error(err);
+
+    res.status(500).json({
+        success: false,
+        message: err.message,
+        stack: err.stack
+    });
+}); 
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 }); 
