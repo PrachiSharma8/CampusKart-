@@ -1,36 +1,60 @@
 const Product = require("../models/Product");  
+const mongoose = require("mongoose"); 
 const cloudinary = require("../config/cloudinary");
 const streamifier = require("streamifier");
-const mongoose = require("mongoose");
+
 
 // ===================== Add Product =====================
 const addProduct = async (req, res) => {
     try {
 
         console.log("===== ADD PRODUCT =====");
-        console.log("req.body =", req.body);
-        console.log("req.file =", req.file);
+        console.log(req.body);
+        console.log(req.file);
 
-        const productData = {
+        let imageUrl = "";
+
+        if (req.file) {
+
+            imageUrl = await new Promise((resolve, reject) => {
+
+                const stream = cloudinary.uploader.upload_stream(
+                    {
+                        folder: "CampusKart"
+                    },
+                    (error, result) => {
+
+                        if (error) return reject(error);
+
+                        resolve(result.secure_url);
+
+                    }
+                );
+
+                streamifier.createReadStream(req.file.buffer).pipe(stream);
+
+            });
+
+        }
+
+        const product = await Product.create({
+
             title: req.body.title,
             description: req.body.description,
             price: req.body.price,
             category: req.body.category,
             condition: req.body.condition,
+            image: imageUrl,
             seller: req.user.id
-        };
 
-        // Save Cloudinary URL
-        if (req.file) {
-            productData.image = req.file.path;
-        }
-
-        const product = await Product.create(productData);
+        });
 
         res.status(201).json({
+
             success: true,
             message: "Product Added Successfully",
             product
+
         });
 
     } catch (error) {
@@ -38,8 +62,10 @@ const addProduct = async (req, res) => {
         console.error(error);
 
         res.status(500).json({
+
             success: false,
             message: error.message
+
         });
 
     }
