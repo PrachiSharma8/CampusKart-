@@ -16,16 +16,29 @@ const {
 // ===================== ADD PRODUCT =====================
 router.post(
     "/add",
-    auth,
-    upload.single("image"),
     (req, res, next) => {
-        console.log("========== AFTER MULTER ==========");
-        console.log("req.body =", req.body);
-        console.log("req.file =", req.file);
+        console.log("STEP 1");
         next();
     },
+
+    auth,
+
+    (req, res, next) => {
+        console.log("STEP 2");
+        next();
+    },
+
+    upload.single("image"),
+
+    (req, res, next) => {
+        console.log("STEP 3");
+        console.log(req.body);
+        console.log(req.file);
+        next();
+    },
+
     addProduct
-);
+);  
 
 // ===================== GET ALL PRODUCTS =====================
 router.get("/", getProducts);

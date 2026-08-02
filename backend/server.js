@@ -40,6 +40,13 @@ app.get("/", (req, res) => {
 
 
 
+
+
+const PORT = process.env.PORT || 5000; 
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+}); 
+
 app.use((err, req, res, next) => {
     console.error("========= GLOBAL ERROR =========");
     console.error(err);
@@ -49,9 +56,4 @@ app.use((err, req, res, next) => {
         message: err.message,
         stack: err.stack
     }); 
-}); 
-
-const PORT = process.env.PORT || 5000; 
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-}); 
+});  
