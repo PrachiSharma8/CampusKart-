@@ -1,4 +1,6 @@
-const Product = require("../models/Product");
+const Product = require("../models/Product");  
+const cloudinary = require("../config/cloudinary");
+const streamifier = require("streamifier");
 const mongoose = require("mongoose");
 
 // ===================== Add Product =====================
