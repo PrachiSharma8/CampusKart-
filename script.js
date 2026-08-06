@@ -119,7 +119,7 @@ if (searchInput) {
 // Load Products
 // ==============================
 
-const API_URL = "https://campuskart-091f.onrender.com/api/products/add";
+const API_URL = "https://campuskart-091f.onrender.com/api/products"; 
 
 let allProducts = [];
 
@@ -133,7 +133,9 @@ async function loadProducts() {
 
         const res = await fetch(API_URL);
 
-        const data = await res.json();
+        const data = await res.json(); 
+        console.log(data);
+console.log(data.products); 
 
         allProducts = data.products || [];
 
@@ -145,7 +147,7 @@ async function loadProducts() {
 
     } finally {
 
-        loader.style.display = "none";
+          if (loader) loader.style.display = "none"; 
 
     }
 
