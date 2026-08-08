@@ -1,4 +1,4 @@
-const token = localStorage.getItem("token");
+const token = localStorage.getItem("authToken");
 const user = JSON.parse(localStorage.getItem("user"));
 
 const guestMenu = document.getElementById("guestMenu");

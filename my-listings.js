@@ -22,17 +22,25 @@ async function loadMyProducts() {
             }
         );
 
-        const data = await res.json(); 
-        document.getElementById("totalProducts").innerText =
-    data.products.length;
+       const data = await res.json();
 
-let total = 0;
+console.log(data);
+
+if (!data.success) {
+    alert(data.message);
+    return;
+}
+
+document.getElementById("totalProducts").innerText =
+    data.products.length; 
+
+let total = 0; 
 
 data.products.forEach(product => {
-
     total += Number(product.price);
-
 });
+
+document.getElementById("totalValue").innerText = "₹" + total; 
 
 document.getElementById("totalValue").innerText =
     "₹" + total; 
@@ -167,7 +175,7 @@ async function deleteProduct(id) {
             {
                 method: "DELETE",
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${authToken}` 
                 }
             }
         );
